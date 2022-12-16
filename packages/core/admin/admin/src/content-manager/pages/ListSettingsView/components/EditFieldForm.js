@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import upperFirst from 'lodash/upperFirst';
+import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
 import {
   ModalLayout,
@@ -36,6 +37,10 @@ const EditFieldForm = ({
   type,
 }) => {
   const { formatMessage } = useIntl();
+
+  if (isEmpty(fieldToEdit)) {
+    return null;
+  }
 
   const relationType = attributes[fieldToEdit].relationType;
 
